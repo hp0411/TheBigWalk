@@ -1,0 +1,52 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+<h1>Checkpoint Image uploader</h1>
+<br />
+<br />
+<a class="btn btn-primary" href="../"><- Back</a>
+<br />
+<br />
+<table class = "table-1">
+   <thead>.
+      <tr>
+         <th>Checkpoint</th>
+         <th>Walk</th>
+         <th>Number</th>
+         <th>Image Download Link</th>
+         <th>Description</th>
+         <th>Longitude</th>
+         <th>Latitude</th>
+         <th> </th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @checkpoints.each do |checkpoint| %>
+         
+         <tr>
+            <td><%= checkpoint.name.humanize %></td>
+            <td><%= checkpoint.walk_type %></td>
+            <td><%= checkpoint.number %></td>
+            <td><%= link_to "Download Checkpoint", checkpoint.attachment_url %></td>
+            <td><%= checkpoint.description %></td>
+            <td><%= checkpoint.lon %></td>
+            <td><%= checkpoint.lat %></td>
+            <td><%= button_to "Delete",  checkpoint, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{checkpoint.name}?" %></td>
+            <td><%= link_to "Edit", edit_checkpoint_path(checkpoint), class: "btn btn-primary"%></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+
+   
+</table>
+<br />
+
+
+<%= link_to "New Checkpoint",  new_checkpoint_path + "?walk_type=long", class: "btn btn-primary" %>

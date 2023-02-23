@@ -1,0 +1,58 @@
+<h1>Checkpoint Uploader</h1>
+<% if !@checkpoint.errors.empty? %>
+   <div class = "alert alert-error">
+      
+      <ul>
+         <% @checkpoint.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+      
+   </div>
+<% end %>
+
+<div class = "well">
+   <a class="btn btn-primary" id="longtab" onclick="togglewalks('long', this)" >Long Walk</a>
+   <a class="btn btn-primary " id="shorttab" onclick="togglewalks('short', this)" >Short Walk</a>
+   <%= form_for @checkpoint, html: { multipart: true } do |f| %>
+      <h4>Please Select a Checkpoint</h4>
+      
+      <select id="select" name="checkpoint[name]" size="4">
+         <% 
+            i = 0
+            @checkpoints.each do |checkpoint| 
+            i = i + 1 
+         %>
+            <option class="p-1rem" value="<%= checkpoint.parameterize(separator: '_') %>">
+               <%= "Checkpoint " + i.to_s + " - " + checkpoint%>
+            </option>
+         <% end %>
+      </select>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= f.label :lon, 'Longitude' %>
+      <%= f.text_field :lon, required: true %>
+      <%= f.label :lat, 'Latitude' %>
+      <%= f.text_field :lat, required: true %>
+      <%= f.label :lat, 'Checkpoint Number in the walk' %>
+      <%= f.text_field :number %>
+      <input class="hidden block" name="checkpoint[walk_type]" id="walk_type" />
+      <br>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>
+<a class="btn btn-primary" href="/checkpoints">Back</a>
+
+<script>
+const { pathname } = window.location
+const longAnchpr = document.getElementById('longtab')
+const shortAnchpr = document.getElementById('shorttab')
+longAnchpr.href = pathname + '?walk_type=long'
+shortAnchpr.href = pathname + '?walk_type=short'
+
+const walk_type = new URL(location.href).searchParams.get('walk_type')
+
+document.getElementById('walk_type').value = walk_type
+</script>

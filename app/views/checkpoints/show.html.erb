@@ -1,0 +1,90 @@
+<h1>Checkpoint Information</h1>
+<br />
+<br />
+<a href="../" class="btn btn-primary" ><-- Back</a>
+<br />
+<br />
+<br />
+<style>
+<% 
+if params["walk_type"] == "long" %>
+  #longtab{
+  background-color: #f5a182 !important;
+  } <%
+  else %>
+    #shorttab{
+    background-color: #f5a182 !important;
+    } <%
+  end
+%>
+</style>
+
+
+<a class="btn btn-primary" id="longtab" onclick="togglewalks('long', this)" >Long Walk</a>
+<a class="btn btn-primary " id="shorttab" onclick="togglewalks('short', this)" >Short Walk</a>
+<br />
+<br />
+<br />
+<h2 id="walk-title"><%= params["walk_type"] %> walk</h2>
+<br />
+<br />
+<div class = "description-page-content">
+    <div class="tab">
+        <% if params["walk_type"] == "long"
+                @checkpoints = @checkpointslong
+            else 
+                @checkpoints = @checkpointsshort
+            end
+        
+        @checkpoints.each do |checkpoint| %>
+            <button class="tablinks" id="<%=checkpoint.name%>" onclick="showDescription(event, 'checkpoint-<%=checkpoint.name%>')"> Checkpoint <%=checkpoint.name.humanize%></button>
+        <% end %>
+    </div>
+
+
+    <% @checkpoints.each do |checkpoint| %>
+        <div id="checkpoint-<%=checkpoint.name%>" class="tabcontent">
+            <img class="description-image" src="<%=checkpoint.attachment_url%>" width="300" height="200">
+            <br />
+            <br />
+            <div>
+                <span class="bold">Latitude: </span><span><%= checkpoint.lat%></span>
+            </div>
+            <div>
+                <span class="bold">Longitude: </span><span><%= checkpoint.lon%></span>
+            </div>
+            <br />
+            <div class ="div-1">
+                <%= checkpoint.description%>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
+<script>
+function showDescription(evt, checkpointName) {
+var i, tabcontent, tablinks;
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+}
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+document.getElementById(checkpointName).style.display = "block";
+evt.currentTarget.className += " active";
+}
+document.getElementById("Hope_station").click();
+</script>
+
+    
+<script>
+const { pathname } = window.location
+const longAnchpr = document.getElementById('longtab')
+const shortAnchpr = document.getElementById('shorttab')
+longAnchpr.href = pathname + '?walk_type=long'
+shortAnchpr.href = pathname + '?walk_type=short'
+
+</script>

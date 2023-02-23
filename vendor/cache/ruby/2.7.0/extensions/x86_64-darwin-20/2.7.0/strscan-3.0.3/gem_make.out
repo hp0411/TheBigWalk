@@ -1,0 +1,16 @@
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/strscan-3.0.3/ext/strscan
+/Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20220513-18608-1ltc68h.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+creating Makefile
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/strscan-3.0.3/ext/strscan
+make "DESTDIR=" clean
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/strscan-3.0.3/ext/strscan
+make "DESTDIR="
+compiling strscan.c
+linking shared-object strscan.bundle
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/strscan-3.0.3/ext/strscan
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 strscan.bundle ./.gem.20220513-18608-eqrxrz

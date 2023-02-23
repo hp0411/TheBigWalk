@@ -1,0 +1,16 @@
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+/Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20220513-11546-15uuwy7.rb extconf.rb
+creating Makefile
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" clean
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 debug.bundle ./.gem.20220513-11546-3ltpg5/debug

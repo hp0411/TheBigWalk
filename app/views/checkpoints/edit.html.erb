@@ -1,0 +1,58 @@
+<h1>Editing Checkpoint </h1>
+
+<a class="btn btn-primary" id="longtab" onclick="togglewalks('long', this)" >Long Walk</a>
+<a class="btn btn-primary " id="shorttab" onclick="togglewalks('short', this)" >Short Walk</a>
+
+<br/>
+<br/>
+
+<% if params[:walk_type] %>
+  <%= form_with model: @checkpoint, url: checkpoint_path(@checkpoint), method: :patch, local: true do |f| %>
+      <h4>Please Select a Checkpoint</h4>
+        <select id="select" name="checkpoint[name]" size="4">
+          <% 
+              i = 0
+              @checkpoints.each do |checkpoint| 
+              i = i + 1 
+          %>
+              <option class="p-1rem" value="<%= checkpoint.parameterize(separator: '_') %>">
+                <%= "Checkpoint " + i.to_s + " - " + checkpoint%>
+              </option>
+          <% end %>
+        </select>
+        
+        <script type="text/javascript">
+        document.getElementById('checkpoints').value = <%= @checkpoint.name %>;
+        </script>
+            
+        <%= f.label :attachment %>
+        <%= f.file_field :attachment %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+        <%= f.label :lon, 'Longitude' %>
+        <%= f.text_field :lon, required: true %>
+        <%= f.label :lat, 'Latitude' %>
+        <%= f.text_field :lat, required: true %>
+        <%= f.label :lat, 'Checkpoint Number' %>
+        <%= f.text_field :number %>
+        <input class="hidden block" name="checkpoint[walk_type]" id="walk_type" />
+        <br>
+        <%= f.submit "Save", class: "btn btn-primary" %>
+  <%end%>
+
+  <script>
+    const walk_type = new URL(location.href).searchParams.get('walk_type')
+    document.getElementById('walk_type').value = walk_type
+  </script>
+<%end%>
+<br/>
+<br/>
+<%= link_to 'Back', checkpoints_path, class: "btn btn-primary" %>
+
+<script>
+const { pathname } = window.location
+const longAnchpr = document.getElementById('longtab')
+const shortAnchpr = document.getElementById('shorttab')
+longAnchpr.href = pathname + '?walk_type=long'
+shortAnchpr.href = pathname + '?walk_type=short'
+</script>

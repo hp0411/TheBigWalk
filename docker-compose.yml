@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  # proxy:
+  #   image: nginx
+  #   volumes:
+  #    - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+  #   ports:
+  #    - "80:80"
+  #   networks:
+  #    - rd-vnet
+  #   depends_on:
+  #     api-uk:
+  #       condition: service_started
+  #     api-us:
+  #       condition: service_started
+  #     web-uk:
+  #       condition: service_started
+  #     web-us:
+  #       condition: service_started
+
+  app:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    # healthcheck:
+    #   test: "nc -z localhost 3000"
+    #   interval: 10s
+    #   retries: 30
+    # env_file:
+    #   - env/rails
+    # environment:
+    #   DATABASE_URL: postgresql://postgres:ayming1133@postgres-uk/rd
+    #   REDIS_HOST: redis-uk
+    command:
+      - /bin/bash
+      - -c
+      - rm -f /myapp/tmp/pids/server.pid; bundle install && bin/rails db:create; bin/rake db:migrate && rails s -p 3000 -b '0.0.0.0'
+#exec bin/bundle exec unicorn -c config/unicorn.rb --no-default-middleware
+
+  db:
+    image: postgres:13.0-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: "nc -z localhost 5432"
+      interval: 10s
+      retries: 30
+    volumes:
+      - .:/local-data/
+
+# networks:
+#   rd-vnet:

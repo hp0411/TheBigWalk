@@ -1,0 +1,370 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ /* Generic styles start */
+h1{
+    text-align: center;
+    font-size: 30px;
+}
+h3{
+  font-size: 1.5em;
+}
+ body {
+   text-align: center;
+   background-color: rgb(255, 255, 255);
+ }
+
+ .hidden {
+  visibility: hidden;
+ }
+
+ .mb-1rem {
+   margin-bottom: 1rem;
+ }
+
+.mb-2rem {
+  margin-bottom: 2rem;
+}
+
+.mb-3rem {
+  margin-bottom: 3rem;
+}
+
+.p-1rem {
+  padding: 1rem;
+}
+
+.p-2rem {
+  padding: 2rem;
+}
+
+.block {
+  display: block !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.div-errors {
+  border: 5px solid red;
+  padding: 15px;
+}
+
+.div-success {
+  border: 5px solid lightgreen;
+  padding: 15px;
+}
+
+.submit-button {
+  padding: 1rem 2rem;
+}
+
+.page-container {
+  padding: 15px;
+  border: 10px solid #ff7d51;
+  margin: 0 auto;
+}
+.text-cointainer{
+  padding: 3%;
+}
+.text-left {
+  text-align: left;
+}
+.modal-box{
+  position: fixed;
+  left: 0;
+  width: fit-content;
+  right: 0;
+  padding: 30px;
+  margin: 15% auto;
+  top: 0;
+  color: white;
+  bottom: 0;
+  height: fit-content;
+  background: #ff7d51;
+}
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  margin: auto;
+}
+.howtouse{
+  text-align: left;
+  transition: 0.3s;
+}
+
+.close{
+  color: white;
+  background: #ffffff00;
+  border: none;
+  font-size: 2.5em;
+  position: absolute;
+  right: 5%;
+  opacity: 1;
+}
+
+.header-image{
+  width: 100%;
+}
+
+.checkpoint{
+  display: inline-block;
+}
+
+.checkpointbox {
+  margin: 10px !important;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:focus{
+  color: #fff;
+  text-shadow: 0 -1px 0 rgb(0, 0, 0);
+  background-image: none !important;
+  background-color: #ff7e51;
+  border: none;
+  padding: 10px 20px;
+}
+.btn-primary-active{
+  background-color: #f5a182 !important;
+}
+.btn-secondary {
+  color: #ff7c51;
+  background-color: white;
+  background-image: none;
+  border: none;
+  padding: 10px 30px;
+}
+.btn-primary:hover  {
+  color: #fff;
+  border: none;
+  background-color: #fc9a73;
+}
+.cointainer{
+  width:fit-content;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.page-element-dark {
+  padding: 2rem;
+  background-color: #a3a3a3;
+}
+
+.input-block {
+  display: block;
+  width: 100% !important;
+  background-color: #E8E8E8;
+  color: black;
+  font-size: 1rem !important;
+  padding: 2rem !important;
+  box-sizing: border-box;
+}
+
+/* Generic styles end */
+
+/* Component styles */
+
+.checkpoints-list select {
+  min-width: 400px !important;
+  min-height: 300px;
+}
+
+.checkpoints-list option {
+  font-size: 2rem;;
+}
+
+.div-1 {
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 15px;
+  background-color: #ebecf0;
+
+}
+.table-1{
+  background-color: #eee;
+  border-collapse: collapse;
+  color: white;
+  width: 100%;
+}
+.table-1 th {
+  background-color: #000;
+  color:white;
+  padding: 5px;
+  border: 1px solid #000; 
+}
+
+.table-1 td {
+  color:rgb(0, 0, 0);
+  padding: 5px;
+  border: 1px solid #000; 
+}
+
+* {box-sizing: border-box}
+
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  float: right;
+  padding: 12px;
+  border: 1px solid #ffffff;
+  width: 70%;
+  border-left: none;
+  height: 100%;
+  background-color: #fe8e69;
+}
+.description-image {
+  border: 1px solid rgb(0, 0, 0);
+}
+@media screen and (max-width: 800px) {
+  h1{
+    font-size: 3.5vh;
+  }
+  html, body, .container, .cointainer{
+    min-height: 100%;
+  }
+  .text-cointainer{
+    height: 75%;
+  }
+
+  .cointainer, .header-image, .container{
+    width: 100% !important;
+    padding-top: 0 !important;
+    box-shadow: none;
+  }
+  .header-image{
+    width: auto !important;
+    border-radius: 10px;
+    height:25%;
+    margin-bottom: 3%;
+  }
+  .checkpoints-list select{
+    min-width: 90% !important;
+  }
+  .vcenter {
+    position: relative;
+    top: 25%;
+}
+  .text-cointainer{
+    padding: 0;
+  }
+  .borders{
+    border: 4px solid #ff7e51;
+    width: 100%;
+    height:33%;
+    padding: 10px;
+    margin-bottom: -4px !important;
+  }
+  .modal-box{
+    height: 100%;
+    margin: 0;
+    padding: 40px 0px;
+  }
+  #checkpointSelectedtext{
+    margin-top: 40px;
+  }
+
+}
+
+@media screen and (max-width: 481px){
+  * {box-sizing: border-box}
+
+  .tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 200px;
+    overflow-y: auto;
+  }
+
+  .tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 10px;
+  }
+
+  .div-1 {
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 10px;
+    background-color: #ebecf0;
+  
+  }
+  .bold {
+    font-size: 10px;
+  }
+
+  .tabcontent {
+    float: right;
+    padding: 12px;
+    border: 1px solid #ffffff;
+    width: 70%;
+    border-left: none;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 15px;
+    background-color: #fe8e69;
+  }
+  
+}

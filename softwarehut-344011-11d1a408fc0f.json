@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "softwarehut-344011",
+  "private_key_id": "11d1a408fc0feef3a3c9cfd5238e4f3bd583d759",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCStCZULy1qhXnp\nBOkKr2CAsVFKpWuRmGmlzYlIPmBHy72pIxSyDwgOPyq/fIJiZq83SlZWs7m8Rq5p\nPjZWKwkFhJj7ke7wyWHFd3n0Tdp7wMePSfqaT92PXYv8bDGA4d613V19RVlEO5ba\nN32xnw0MIDgWcCiLE21a1ITIMYqcgvMppWyKprNQpf4BvZLnSMqtLM2JV4zotWqv\nC372AKGcyhThF7CmZ11NcAG6KV3hoECJ/99vcmIK/BrZU/4AwovWXkX3GeXQ0EjU\njFjnVmNdmVBQucHhlh55S4MZ8XreI4DOHwr1VxUOW6nU1GUe9aQ558iDrJXpAhe0\nsOGe35H3AgMBAAECggEAFoSfc4GQU47sYQeXa8PyqJ5PD4mnosAFy2TqoxOr/Kk5\n0fnoBdLH1kP84EqQyuDfGToIWaOZqVwiDlZ1ybEuX9H0F31Vc1E9+Cz4I7dFh4RW\nPVjKJiCHLifaQmMrEBDbegfh/0YDRzVsWM92tCppOsjBQzRxDLPtL6l6Pi5Yi+BU\nSsS3YDpRaqqsGtm6CseH6fCEAMo3wlJHaslKyRNsE/8lsML1mDj05/LxBCyhOqzl\nTxsYW/FfIF9+Ymaz7Dhi5RO64JNDTY4OWt9KTVoybpYjNeI/Wd2gvt0MV7xbc2MX\nqAss763OkEvmrdYq2f78iaoar+qltfVEA2yCGJFwkQKBgQDDrdaDsO0tel6AEQFb\n3NKx6ZtnW6ExSLuyQx1HK2bhSogvd6V9YoYfPS8xCQWymEVTrpy0sMt3avWufQRU\nnil1a5ixzyGCLUT9OFxwxpbjZFVpx1EmpOi1N6av5cu5IRvZBj4wR/evTpI1Bm7G\nQ+ino20fOkrhYjbi4ZfxsKeoxwKBgQC/7WKSQBlykqW73nEk+OMgUqrJGiZETN9F\n88UNk1iwI1mVgXP4+7gWvDALpAEPvK9Z7fefRdd7vUmz6XWiqy6lXNkmXPnhjOLA\nbwMgIvmNuLAMqH7A32IoKL9mm300woAQcoPt4cPcvn1t5BIBIkkR5avodlP8MyUX\nafgBmkZ9UQKBgQCUWHHMHJFybNa/mCTDk8FXh5Z84QZu6okBN8g2cDzqhyp/ceFQ\nESVFAYmJTyG2p6HHMxUyFuXpfnkK81QZIl6j2hJEmpb4rYEjx1qtVKCHe0UVkDmB\nZnvVBn+j0j6D9wm5mfYDfEvV52cIM/w+6rSygj7z8ala/K5Himc6n4Y7eQKBgEpd\n/x3QPIwKirF7BbhfwBIcNhTqTv2UE8eVJzuVZn4JlIK7wGYvkyssDCnWiJrCb+eW\nr6ZFd7N4qwBNa8l2LwLgMTwONrzQzGPoH/vp0Wy6rWyaNVMiu3P4JgHqKd+xpdG5\nrakVG8GDBjL4dol98XY/2hafEvfcEXk7FF/6mWmhAoGBAMAWl3hw5ggh38AQP4DG\nZPthSorPVVqMfZY/vT0fFGmICvA51XBWcHqAesKOjEX3IEE3/1iL6KeVLWOX60kS\ndOhSkYjUKT39HATUpbKzHzmsCiuavbpGWDmqJpfqrSf3sWQZplyVdLL7ZznXdikV\nd9hXf3aHxQZJ2t8Sxr8t5F5X\n-----END PRIVATE KEY-----\n",
+  "client_email": "softwarehut-service-account@softwarehut-344011.iam.gserviceaccount.com",
+  "client_id": "115754719226000663283",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/softwarehut-service-account%40softwarehut-344011.iam.gserviceaccount.com"
+}

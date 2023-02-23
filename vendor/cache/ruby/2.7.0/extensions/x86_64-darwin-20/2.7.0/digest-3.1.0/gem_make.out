@@ -1,0 +1,18 @@
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/digest-3.1.0/ext/digest/sha2
+/Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/alexanderstreet/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20220513-11546-16h3xim.rb extconf.rb
+checking for u_int8_t... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR=" clean
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR="
+compiling sha2init.c
+compiling sha2.c
+linking shared-object digest/sha2.bundle
+
+current directory: /Users/alexanderstreet/Documents/University/Software_Hut/final/finald/vendor/cache/ruby/2.7.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 sha2.bundle ./.gem.20220513-11546-1rx336/digest

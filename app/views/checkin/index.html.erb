@@ -1,0 +1,190 @@
+<style>
+<% 
+if params[:walk_type] == "short" %>
+  #shorttab{
+  background-color: #f5a182 !important;
+  } <%
+  else %>
+    #longtab{
+    background-color: #f5a182 !important;
+    }
+     <%
+  end
+%>
+
+</style>
+<div class="page-container cointainer text-center">
+  <h1>Checkpoint Tracker</h1>
+  <a class="btn btn-primary" href="../"><- Back</a>
+  <div class="mb-2rem"></div>
+
+    <% if @success %>
+      <div class="div-success">
+        <p> <%= @success %> </p>
+      </div>
+    <% end %>
+
+    <% if @errors && @errors.length > 0 %>
+      <% @errors.each do |error| %>
+        <div class="div-errors">
+            <p> <%= error %> </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <a class="btn btn-primary" id="longtab" href="/checkin?walk_type=long">Long Walk</a>
+    <a class="btn btn-primary " id="shorttab" href="/checkin?walk_type=short">Short Walk</a>
+      <form accept-charset="UTF-8" id="checkpointselectform" id="form" onsubmit="return submit_form();">
+        <div class="mb-3rem"></div>
+          <h2 >Select a checkpoint</h2>
+
+            <div class="checkpoints-list" id="short">
+              <select id="select" name="checkpoint" size="4">
+              <% i = 0
+                @checkpoints.each do |checkpoint| 
+                  i = i + 1 %>
+                  <option class="p-1rem" value="<%= checkpoint.parameterize(separator: '_') %>"><%= "Checkpoint " + i.to_s + " - " + checkpoint%></option>
+                <% end %>
+              </select>
+            </div>
+
+        <div class="mb-2rem"></div>
+        <input class="btn btn-primary" type="submit" name="commit" value="Check in" />
+      </form>
+            <button class="btn btn-primary" onclick="toggleDropout();">Drop out!</button>
+      <button class="btn btn-primary" onclick="toggleHelp();">Help!</button>
+      <div id="dropout" style="display:none" class="howtouse" >
+      <form action="/dropout" method="post" class="Help">
+        <h1>Caution!:</h1>
+        <h3>You are about to drop out of the event early - To finish the event, check in at the last checkpoint!</h3>
+        <p>Please enter your walker number</p>
+        <input type="text" name="walker" placeholder="Ex.: 1,5,10 73.." class="btn btn-secondary"/>
+        <div><p class="checkpoint">Do you need picking up ?</p><input name="pickup" type="checkbox" class="btn btn-secondary checkpointbox"/></div>
+        <select name='walktype'>
+          <option class="p-1rem" value="long">Long Walk</option>
+          <option class="p-1rem" value="short">Short Walk</option>
+        </select>
+        <br>
+        <input type="submit" class="btn btn-primary" onclick="closemodal();" value="Confirm Dropout"/>
+      </form>
+      <%# end drop out button %>
+      </div>
+      <div id="help" style="display:none" class="howtouse" >
+        <form action="/help" method="post" class="Help">
+          <h1>Help area!:</h1>
+          <h3>Please answer a few basic questions to provide us with more information, if an emergency call 999</h3>
+          <p>Please enter your walker number</p>
+          <%# <input type="text" name="walker" class="btn btn-secondary"/> %>
+          <input type="text" placeholder="Walker number, Ex: 1,2,3,10.." name="walker" required class="btn btn-secondary">
+          <p>Do you need picking up ?</p><input name="pickup" type="checkbox" class="btn btn-secondary"/>
+          <p>How severe is you inury ?</p><input name="severity" placeholder="From 1-100. Ex: 70.." type="text" class="btn btn-secondary"/>
+          <p>Add a one to two sentance summary of the issue</p><input name="description" placeholder="Ex.: I bruised my leg.." type="text" class="btn btn-secondary"/>
+          <p>Any additional notes?</p><input name="notes" placeholder="If you have a more severe issue, note it down here!" type="text" class="btn btn-secondary"/>
+          <p>Do you need anything else?</p><input name="needs" placeholder="Ex.: Extra material we could bring, like: inhaler.." type="text" class="btn btn-secondary"/>
+          <p>Please enter your phone number</p><input name="number" placeholder=" No country code, for ex.: 075..." type="text" class="btn btn-secondary"/>
+          <br>
+          <input type="submit" class="btn btn-primary" value="Confirm Help!"/>
+        </form>
+        </div>
+
+
+      <div id="howtouse" style="display:none" class="howtouse" >
+      <h1>How to use</h1>
+      <p>Step 1: Select a checkpoint</p>
+      <p>Step 2: Click Next</p> 
+      <p>Step 3: Enter the participant numbers you want to check in</p>
+    </div>
+</div>
+    </div>
+    <div  id="addcheckpoint" class="modal">
+      <div  class="modal-box">
+      <button class="close" onclick="closemodal();">X</button>
+        <div>
+          <h1 id="checkpointSelectedtext"  >Check in</h1>
+          <div class="mb-2rem"></div>
+          <h3>Enter walker's numbers below e.g. 13,2,59,53</h3>
+        </div>
+        <form accept-charset="UTF-8" action="/checkin" data-remote="true" method="post">
+          <div class="p-2rem">
+            <input class="input-block" type="text" name="participant_numbers" placeholder="Enter comma separated values: 1,2,3"/>
+          </div>
+          <input class="hidden block" type="text" name="checkpoint" id="checkpointSelected" />
+          <input class="hidden block" name="latitude" id="latitude" />
+          <input class="hidden block" name="longitude" id="longitude" />
+          <input class="hidden block" name="walk_type" id="walk_type" />
+          <input class="btn btn-secondary" type="submit" value="Submit" />
+        </form>
+        </div>
+      </div>
+
+<script>
+function closemodal(){
+    document.getElementById("addcheckpoint").style.display="none";
+}
+
+// Geolocation code from https://www.w3schools.com/html/html5_geolocation.asp
+function getLocation() {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resolve, reject, {timeout:5000});
+    } else {
+      reject("Geolocation is not supported by this browser.")
+    }
+  })
+}
+
+function humanizeCheckpointText(text) {
+  text.replace(/_/g, ' ')
+}
+
+function submit_form(){
+  console.log('in submit form')
+  getLocation()
+    .then(position => {
+      console.log('your location: ', position)
+      document.getElementById("latitude").value=position.coords.latitude;
+      document.getElementById("longitude").value=position.coords.longitude;
+    })
+    .catch(error => {
+      alert(`Cannot get geolocation data. ${error.message}`)
+    })
+    .finally(() => {
+      select = document.getElementById("select");
+      checkpointtext = select.value;
+      document.getElementById("addcheckpoint").style.display="block";
+      console.log('SET CHECKPOINT SELECTED TO: ', select.value)
+      document.getElementById("checkpointSelected").value=select.value;
+      document.getElementById("walk_type").value=new URL(location.href).searchParams.get('walk_type') || 'long';
+      document.getElementById("checkpointSelectedtext").innerHTML=`Check in at ${select.options[select.selectedIndex].text}`;
+    })
+
+  return false; // don't submit the form
+}
+
+function toggleHelp() {
+  if (document.getElementById("help").style.display == "none"){
+    document.getElementById("help").style.display = "initial";
+  }else{
+    document.getElementById("help").style.display = "none";
+  }
+}
+
+function toggleDropout() {
+  if (document.getElementById("dropout").style.display == "none"){
+    document.getElementById("dropout").style.display = "initial";
+  }else{
+    document.getElementById("dropout").style.display = "none";
+  }
+}
+
+
+function toggleNav() {
+
+  if (document.getElementById("howtouse").style.display == "none"){
+    document.getElementById("howtouse").style.display = "initial";
+  }else{
+    document.getElementById("howtouse").style.display = "none";
+  }
+}
+
+</script>

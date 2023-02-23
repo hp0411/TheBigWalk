@@ -1,0 +1,71 @@
+Sentry HTTP Transport will connect to https://sentry.shefcompsci.org.uk
+Initializing the background worker with 12 threads
+Started GET "/" for 127.0.0.1 at 2023-02-23 12:40:56 +0000
+[Tracing] Starting <rails.request> transaction </>
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering application/index.html.erb within layouts/application
+  Rendered application/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 470)
+  Rendered layout layouts/application.html.erb (Duration: 427.6ms | Allocations: 127041)
+Completed 200 OK in 448ms (Views: 432.3ms | ActiveRecord: 0.0ms | Allocations: 132398)
+
+
+[Transport] Sending envelope with items [transaction] bf4f2cd6777f49c48ef70266d43e646e to Sentry
+Transaction sending failed: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Unreported Transaction: ApplicationController#index
+exception happened in background worker: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Started GET "/checkpoints/show?walk_type=long" for 127.0.0.1 at 2023-02-23 12:41:06 +0000
+[Tracing] Starting <rails.request> transaction </checkpoints/show>
+Processing by CheckpointsController#show as HTML
+  Parameters: {"walk_type"=>"long"}
+  [1m[36mCheckpoint Load (8.2ms)[0m  [1m[34mSELECT "checkpoints".* FROM "checkpoints" ORDER BY "checkpoints"."walk_type" ASC, "checkpoints"."number" ASC LIMIT $1[0m  [["LIMIT", 21]]
+  ↳ app/controllers/checkpoints_controller.rb:44:in `show'
+  [1m[36mCheckpoint Load (0.3ms)[0m  [1m[34mSELECT "checkpoints".* FROM "checkpoints" ORDER BY "checkpoints"."walk_type" DESC, "checkpoints"."number" DESC LIMIT $1[0m  [["LIMIT", 12]]
+  ↳ app/controllers/checkpoints_controller.rb:45:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering checkpoints/show.html.erb within layouts/application
+  Rendered checkpoints/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1122)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 6290)
+Completed 200 OK in 100ms (Views: 12.0ms | ActiveRecord: 34.4ms | Allocations: 17838)
+
+
+[Transport] Sending envelope with items [transaction] 336c914d3edb4d82be7b82cf9b2f56c8 to Sentry
+Transaction sending failed: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Unreported Transaction: CheckpointsController#show
+exception happened in background worker: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Started GET "/checkpoints/show?walk_type=short" for 127.0.0.1 at 2023-02-23 12:41:26 +0000
+[Tracing] Starting <rails.request> transaction </checkpoints/show>
+Processing by CheckpointsController#show as HTML
+  Parameters: {"walk_type"=>"short"}
+  [1m[36mCheckpoint Load (0.3ms)[0m  [1m[34mSELECT "checkpoints".* FROM "checkpoints" ORDER BY "checkpoints"."walk_type" ASC, "checkpoints"."number" ASC LIMIT $1[0m  [["LIMIT", 21]]
+  ↳ app/controllers/checkpoints_controller.rb:44:in `show'
+  [1m[36mCheckpoint Load (0.3ms)[0m  [1m[34mSELECT "checkpoints".* FROM "checkpoints" ORDER BY "checkpoints"."walk_type" DESC, "checkpoints"."number" DESC LIMIT $1[0m  [["LIMIT", 12]]
+  ↳ app/controllers/checkpoints_controller.rb:45:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering checkpoints/show.html.erb within layouts/application
+  Rendered checkpoints/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 502)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 5667)
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 0.6ms | Allocations: 7231)
+
+
+[Transport] Sending envelope with items [transaction, client_report] 5fe4497e2f16409284c4ceba570cb47e to Sentry
+Transaction sending failed: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Unreported Transaction: CheckpointsController#show
+exception happened in background worker: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Started GET "/" for 127.0.0.1 at 2023-02-23 12:41:42 +0000
+[Tracing] Starting <rails.request> transaction </>
+Processing by ApplicationController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering application/index.html.erb within layouts/application
+  Rendered application/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 5212)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 5452)
+
+
+[Transport] Sending envelope with items [transaction] 20b9c3edefe54575808a6466a42c1d96 to Sentry
+Transaction sending failed: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Unreported Transaction: ApplicationController#index
+exception happened in background worker: Failed to open TCP connection to sentry.shefcompsci.org.uk:443 (execution expired)
+Killing session flusher
+Shutting down background worker
